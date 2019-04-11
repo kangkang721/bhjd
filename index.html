@@ -1,96 +1,435 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>滨海街道</title>
-    <style type="text/css">
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        body, button, input, select, textarea {
-            font: 12px/16px Verdana, Helvetica, Arial, sans-serif;
-        }
-
-        p {
-            width: 603px;
-            padding-top: 3px;
-            overflow: hidden;
-        }
-
-        .btn {
-            width: 100px;
-            height: 26px
-        }
-        #container {
-           min-width:603px;
-           min-height:767px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>滨海街道村居风采展示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Add your keywords and description here for SEO. -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-"></script>
-		<!--#astarjs_t#-->
-	<script type='text/javascript' src='astar.js'></script>
-	<!--#astarjs_b#-->
-    <script>
-		//varstar_t
-	var graphDiagonal = new Graph(gridDest, { diagonal: true }); 
-	var start = graphDiagonal.grid[0][0];
-	var end = graphDiagonal.grid[0][3]; 
-	var startLng, startLat, endLng, endLat;
-	var pathPoi = [], pathLineArray = [];
-	//varstar_b
+    <!-- Uncomment this if you need apple touch icon. -->
+    <!--
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+    -->
+
+    <!-- Don't delete this. It's needed for development workflow. -->
+    <link rel="stylesheet" href="stylesheets/bundle.css">
+</head>
+
+<body onload="init();">
+    <div class="loading-overlay">
+        <img src="images/loading.svg">
+    </div>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide-1">
+                <div class="item-image animated" data-ani-name="slideInLeft" data-ani-duration="1s" data-ani-delay="0s">
+                </div>
+                <div class="item-image2 animated" onclick="alert(1)" data-ani-name="slideInLeft" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+                <div class="item-image8 animated" data-ani-name="bounceInDown" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+                <div class="item-image7 animated" data-ani-name="flipInY" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+                <div class="item-image5 animated" data-ani-name="slideInRight" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+                <div class="item-image6 animated" data-ani-name="bounceInUp" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+                
+                <div class="item-image4 animated" data-ani-name="flipInX" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+                
+                <div class="item-image3 animated" data-ani-name="flipInY" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                </div>
+            </div>
+            <div class="swiper-slide slide-2">
+                <div class="animated swiper-no-swiping" data-ani-name="bounceInDown" data-ani-duration="1s"
+                    data-ani-delay="0s">
+                    <div id="container" style="min-width: 303px; min-height: 467px;"></div>
+                    qqq
+                </div>
+                <p class="item-text animated" data-ani-name="bounceInUp" data-ani-duration="1s" data-ani-delay="0.3s">
+
+                </p>
+            </div>
+            <div class="swiper-slide slide-3">
+                <div class="item-image animated" data-ani-name="flipInX" data-ani-duration="1s" data-ani-delay="0s">
+                </div>
+                <p class="item-text animated" data-ani-name="flipInY" data-ani-duration="1s" data-ani-delay="0.3s">
+                    I'm a
+                    javascript newbie!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <button class="up-arrow">
+        <i class="icon-angle-double-up"></i>
+    </button>
+
+    <button class="btn-music">
+        <i class="icon-note"></i>
+    </button>
+
+    <audio loop>
+        <source src="audios/background.mp3" type="audio/mpeg">
+    </audio>
+    <div id="shipping" class="swiper-no-swiping">
+        <div class="block">
+            <div class="header">
+                <section class="_135editor" data-id="94357" style="border: 0px none; box-sizing: border-box;">
+                    <section
+                        style="display: flex;justify-content: center;align-items: center;margin-top:1em;margin-bottom:1em;">
+                        <section style="display: inline-block;width:2em;"><img style="width: 100%;display: block;"
+                                src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzRiUHNLc2Zsa3lVSUdRQnR3YnJWT05NME5xUDdZcm9raWFhRENZaWFwNThPN1Q0QlY2QkVJdWJBR2J5ekpSdXNZaWMyUHZvWjM4dW8wSEEvMD93eF9mbXQ9cG5n"
+                                data-width="100%" alt="aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9w"></section>
+                        <section id="villageName"
+                            style="text-align: center; color: rgb(245, 243, 243);font-weight: bold; font-size: 21px; padding: 8px; box-sizing: border-box;">
+                        </section>
+                        <section style="display: inline-block;width:2em;"><img
+                                style="width: 100%;display: block;transform: scaleX(-1);-webkit-transform: scaleX(-1);-moz-transform: scaleX(-1);-ms-transform: scaleX(-1);-o-transform: scaleX(-1);"
+                                src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzRiUHNLc2Zsa3lVSUdRQnR3YnJWT05NME5xUDdZcm9raWFhRENZaWFwNThPN1Q0QlY2QkVJdWJBR2J5ekpSdXNZaWMyUHZvWjM4dW8wSEEvMD93eF9mbXQ9cG5n"
+                                data-width="100%" alt="aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9w"></section>
+                    </section>
+                </section>
+            </div>
+            <div class="body">
+                <section style="padding:5px;">
+                    <section
+                        style="text-align:center;border:rgb(204,204,204) dashed 1px; background: rgb(248,248,248);box-shadow: -1px 5px 7px rgb(229,229,229);letter-spacing: 1.5px;padding:1em 1em;color:rgb(63,63,63);">
+                        <section style="display: inline-block;margin-bottom: 1em;">
+                            <section id="villageTitle"
+                                style="text-align: center;font-size: 19px;padding: 0px 0.6em;letter-spacing: 1.5px;">
+                                朱家小庄村居基本情况</section>
+                            <section style="height: 12px;background:#f3df01;margin-top: -12px;"></section>
+                        </section>
+                        <section id="villageOverview"
+                            style="letter-spacing: 1px; text-align: justify; padding: 2px 0.8em;line-height:1.75em;letter-spacing:1.5px;font-size: 14px;">
+
+                        </section>
+                    </section>
+                </section>
+                <div id="content"></div>
 
 
-        var map;
-        function init() {
-            var earthlayer = new qq.maps.ImageMapType({
-                name: '滨海街道',
-                alt: '滨海街道',
-                tileSize: new qq.maps.Size(256, 256),
-                minZoom: 14,
-                maxZoom: 0,
-                opacity: 1,
-                getTileUrl: function (tile, zoom) {
-                    var z = zoom,
-                            x = tile.x,
-                            y = tile.y;
-                            // alert(x)
-                            console.log(z)
-                            console.log(x,y)
-					return 'tiles/' + z + '/' + x + '_' + y + '.png';
+            </div>
+            <div class="footer">本数据由滨海街道办事处提供</div>
+        </div>
+        <div class="close-btn"><i class="iconfont iconc-cuowuguanbiquxiao"></i></div>
+    </div>
+    <!-- Don't delete this. It's needed for development workflow. -->
+    <script src="javascripts/bundle.js"></script>
+
+</body>
+<script>
+
+
+    var data = [
+        {
+            position: {
+                x: 74.27091076652805,
+                y: 95.94635009765625
+            },
+            villageName: "朱家小庄村",
+            villageTitle: "朱家小庄村居基本情况",
+            villageOverview: `<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;朱家小庄位于滨海街道办事处驻地。据传明嘉年间，海瑞被捕入狱，有亲属恐受株连逃至此地立村，改为朱姓，因比邻近村小故名朱家小庄。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;548户、1786口人；耕地580亩，山林360亩。
+</p>
+<p>
+    村集体收入60万，主要是租赁土地和房屋。村民收入主要来源是以务工为主，2017年居民估计人均纯收入在19000元左右。村民每年每人发放面粉、大米等节日福利。722人办理了养老保险、630人办理了失地保险。2017年危房改造1户。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;村庄建成区面积520亩，宅基地575户；村居办公场所总面积1600平方米，社区服务中心面积300平方米，设有卫生室等。 <br/>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;党员67人，入党积极分子4人，建国前入党的老党员1人。村“两委”干部3人，党总支书记李守荣，村主任李守荣。
+</p>`,
+            element: [
+                {
+                    title: "网格人员",
+                    element: [
+                        {
+                            name: "张伟",
+                            telephone: "18561980158",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张伟2",
+                            telephone: "18561980158",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        }
+                    ]
                 }
+            ]
 
-            });
-            var l = new qq.maps.LatLng(35.80138, 120.00846)
-            map = new qq.maps.Map(document.getElementById("container"), {
-                center: l, // 35.801386201110894, lng: 120.00846862792969
-                zoom: 13,
-                mapTypeControlOptions: {
-                    mapTypeIds: ['earth']
+        },
+        {
+            position: {
+                x: 74.28542332511205,
+                y: 96.05140686035156
+            },
+            villageName: "王家村",
+            villageTitle: "王家村居基本情况",
+            villageOverview: `<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;王家村位于滨海街道办事处东侧，西靠204国道，东靠海滨工业园区琅琊台路，位于海滨工业园区内。据传，明初王姓从云南迁此立村取名王家村。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;612户、2202口人；耕地300亩，山林660亩。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;村集体收入152.3万，其中厂房租赁年收入80余万元,财政专项利息65万元,村民承包费、租赁费7.3万元。村民主要从事是务工，占比70%。村集体每年发放福利米、面、油共计1055435元， 60周岁老年人每年福利款300600元。低保户9户，五保集中供养一人，政府救助18人。380余人办理了养老保险、460余人办理了失地保险等。2015年危房改造2户。 <br/>
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;村（居）建成区面积360亩、宅基地700处，村居办公场所面积500平方米。社区服务中心面积40平方米，设有卫生室等。
+</p>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;党员73人、入党积极分子3人。村“两委”干部5人，党总支书记王立生，村主任李照恩。
+</p>`,
+            element: [
+                {
+                    title: "网格人员",
+                    element: [
+                        {
+                            name: "杨玲",
+                            telephone: "18561980039",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        }
+                    ]
+                },
+                {
+                    title: "电工人员",
+                    element: [
+                        {
+                            name: "杨玲",
+                            telephone: "18561980039",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        },
+                        {
+                            name: "张四",
+                            telephone: "15322441155",
+                            gridTelephone: "",
+                            introduction: "",
+                            avatar: "bhl.png"
+                        }
+                    ]
                 }
-            });
-            map.overlayMapTypes.push(earthlayer);
-            var marker = new qq.maps.Marker({
-                position: l,
+            ]
+
+        }
+    ];
+    var map;
+    /**
+     * 初始化地图插件
+     */
+    function init() {
+        var earthlayer = new qq.maps.ImageMapType({
+            name: '滨海街道村居',
+            alt: '滨海街道村居',
+            tileSize: new qq.maps.Size(256, 256),
+            minZoom: 10,
+            maxZoom: 11,
+            opacity: 1,
+            getTileUrl: function (tile, zoom) {
+                var z = zoom,
+                    x = tile.x,
+                    y = tile.y;
+                return 'images/image/' + z + '/images/' + x + '_' + y + '.png';
+            }
+        });
+        map = new qq.maps.Map(document.getElementById("container"), {
+            center: new qq.maps.LatLng(74.27146918335306, 95.97038269042969),
+            zoom: 11,
+            mapTypeControlOptions: {
+                mapTypeIds: ['earth']
+            }
+        });
+        map.mapTypes.set('earth', earthlayer);
+        map.setMapTypeId('earth');
+        /** 地图初始化完成 */
+
+
+        /** 
+         * 初始化标记点
+         */
+        var marker = new qq.maps.Marker({
+            position: new qq.maps.LatLng(74.22580143392891, 96.04248046875),//
+            map: map
+        });
+        /**
+         * 初始化标记点事件 
+         */
+        qq.maps.event.addListener(map, 'click', function (event) {
+            var latLng = event.latLng;
+            console.log(latLng)
+            /**
+             * 这里是处理弹出页面的事件
+             */
+            document.querySelector("#shipping").style.display = 'block';
+        });
+
+        for (var i = 0; i < data.length; i++) {
+            var m = new qq.maps.Marker({
+                position: new qq.maps.LatLng(data[i].position.x, data[i].position.y),//
                 map: map
             });
-			//click_t
-      //���Ӽ����¼�
-      qq.maps.event.addListener(map, 'click', function(event) {
-      	var latLng = event.latLng;
-          console.log(latLng)
-      });
-      //click_b 
+            qq.maps.event.addListener(m, 'click', function (event) {
+                var latLng = event.latLng;
+                console.log(latLng)
+                /**
+                 * 这里是处理弹出页面的事件
+                 */
+                var item = {};
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j].position.x == latLng.lat) {
+                        item = data[j];
+                    }
+                }
+                document.querySelector("#villageName").innerHTML = item.villageName;
+                document.querySelector("#villageTitle").innerHTML = item.villageTitle;
+                document.querySelector("#villageOverview").innerHTML = item.villageOverview;
+                var template_g = '';
+                for (var a = 0; a < item.element.length; a++) {
+                    template_g += `<section style="text-align: center;margin: 20px 10px 10px 10px;">
+                    <section style="display: flex;justify-content: center;align-content: center;">
+                        <section style="width: 1.2em;margin-top:2px;"><img style="width: 1.2em;"
+                                src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzZiZ2JkT3VMUVpvUk5IZ0I5RUVkYTN1T0s1M3Y5ZDZWa3pEZm5pY2liVFdWQmhrcWtRbHowOU5pY0htazhmMktaaWFKcnRQQ2liSWljenVpY21BLzA/d3hfZm10PXBuZw=="
+                                alt="d3hfZm10PXBuZw=="></section>
+                        <section style="display: inline-block;margin: 0px 10px;">
+                            <section
+                                style="background-image: -webkit-linear-gradient(left, #fdd6dd,#c7c2f6);border-radius:2px;">
+                                <section class="135brush"
+                                    style="padding: 2px 20px; color: rgb(255,255,255);font-size: 16px;text-align: center;letter-spacing: 2px;line-height: 1.75em;">
+                                    `+ item.element[a].title + `</section>
+                            </section>
+                        </section>
+                        <section style="width:0.8em;"><img style="width: 0.8em; display: inline;" class=""
+                                src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzZiZ2JkT3VMUVpvUk5IZ0I5RUVkYTN4bVBERkJ3N3lLU2hZSHJISnZ2c3Vxak1PR2hYcUcxcGpqQ1RNZmljZm1EN0VZbjFvZDVFNW1nLzA/d3hfZm10PXBuZw=="
+                                data-src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzZiZ2JkT3VMUVpvUk5IZ0I5RUVkYTN4bVBERkJ3N3lLU2hZSHJISnZ2c3Vxak1PR2hYcUcxcGpqQ1RNZmljZm1EN0VZbjFvZDVFNW1nLzA/d3hfZm10PXBuZw=="
+                                alt="grey.gif"></section>
+                    </section>
+                </section>`;
+                    for (var b = 0; b < item.element[a].element.length; b++) {
+                        var color = b % 2 == 0 ? '255, 255, 255' : '246, 246, 246';
+                        template_g += `<section style="padding: 5px; box-sizing: border-box;">
+                            <section
+                                style="border-radius: 10px; background: rgb(`+ color + `); border: 1px solid rgb(229, 229, 229); overflow: hidden; box-sizing: border-box;">
+                                <section
+                                    style="display: flex; justify-content: flex-start; padding: 0.6em; align-items: center; box-sizing: border-box;">
+                                    <section style="width: 60px;">
+                                        <section
+                                            style="border-radius: 100%; overflow: hidden; margin: 0px auto; width: 100%; padding-bottom: 100%; height: 0px; background-image: url(&quot;https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvN1FSVHZrSzJxQzdiVWtOT3k5YTRIMUg2Zld5WU16alRPS2xVcnN1TDFKUTVleUFGZ010TW1QOW9xQjE5bGxIb3JTVDBwNXhvUTR3bmt3Q0NpY1BpY2ZQQS8w&quot;); background-position: 50% 50%; background-size: cover; box-sizing: border-box;"
+                                            data-width="100%"><img
+                                                src="images/gridPersonnel/`+ item.element[a].element[b].avatar + `"
+                                                style="opacity:1;" alt="aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9w">
+                                        </section>
+                                    </section>
+                                    <section class="135brush"
+                                        style="margin-left:1em ;font-size: 15px;letter-spacing: 1px;line-height: 1.75em;max-width:80%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+                                        <strong></strong>
+                                        <p><strong>`+ item.element[a].element[b].name + `</strong></p><strong></strong>
+                                        <p>`+ item.element[a].element[b].telephone + `</p>
+                                    </section>
+                                </section>
+                            </section>
+                            <section style="text-align:right;margin-right: 1.6em;margin-top: -48px;">
+                                <section style="display:inline-block;width: 90px;height: 48px;overflow: hidden;">
+                                    <section class="135brush"
+                                        style="font-size: 50px;color: #ebebeb;font-family: &quot;Bahnschrift&quot;;">
+                                        0`+ (b + 1) + `</section>
+                                </section>
+                            </section>
+                        </section>`
+                    }
+
+                }
 
 
-
+                document.querySelector("#content").innerHTML = template_g;
+                document.querySelector("#shipping").style.display = 'block';
+            });
         }
-    </script>
-</head>
-<body onload="init();">
-<div id="container"></div>
-<span id="info"></span>
-</body>
+    }
+
+    /**
+     * 关闭弹窗的实现
+     */
+    document.querySelector(".close-btn").onclick = function () {
+        document.querySelector("#shipping").style.display = 'none';
+    }
+</script>
+
 </html>
